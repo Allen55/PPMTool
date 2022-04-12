@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -15,6 +16,8 @@ public class Project {
     @NotEmpty(message="Required")
     private String projectName;
     @NotEmpty(message="Required")
+    @Size(min=4, max=5, message="Please use 4 to 5 characters")
+    @Column(updatable = false, unique = true)
     private String projectIdentifier;
     @NotEmpty(message="Required")
     private String description;
